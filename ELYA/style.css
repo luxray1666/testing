@@ -1,0 +1,127 @@
+body {
+    margin: 0;
+    background: #e2e2e2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.envelope-wrapper {
+    background: cyan;
+    position: relative;
+}
+
+.envelope {
+    position: relative;
+    width: 280px;
+    height: 180px;
+}
+
+.envelope::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    border-top: 100px solid cyan;
+    border-right: 140px solid transparent;
+    border-left: 140px solid transparent;
+    transition: all 0.5s ease-in-out 0.5s;
+    -webkit-transition: all 0.5s ease-in-out 0.5s;
+    -moz-transition: all 0.5s ease-in-out 0.5s;
+    -ms-transition: all 0.5s ease-in-out 0.5s;
+    -o-transition: all 0.5s ease-in-out 0.5s;
+}
+
+.envelope::after {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    width: 0;
+    height: 0;
+    border-top: 100px solid transparent;
+    border-right: 140px solid pink;
+    border-bottom: 80px solid pink;
+    border-left: 140px solid pink;
+}
+
+.letter {
+    position: absolute;
+    right: 20%;
+    bottom: 0;
+    width: 54%;
+    height: 75%;
+    background: white;
+    text-align: center;
+    transition: all 1s ease-in-out;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    padding: 15px 8px;
+}
+
+.text {
+    font-family: 'Gill Sans', 'Trebuchet MS', sans-serif;
+    color: #444;
+    text-align: left;
+    font-size: 9px;
+}
+
+.button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 36px;
+    height: 36px;
+    background: rgb(252, 8, 231);
+    z-index: 4;
+    transform: translate(-50%, -50%);
+    transition: transform 0.5s ease-in-out 1s;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+.button i {
+    font-size: 18px;
+    color: white;
+}
+
+.button::before, 
+.button::after {
+    display: none;
+}
+
+@keyframes pulse {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+.flap .envelope::before {
+    transform: rotateX(180deg);
+    z-index: 0;
+}
+
+.flap .letter {
+    bottom: 80px;
+    transform: scale(1.5);
+}
+
+.flap .button {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
